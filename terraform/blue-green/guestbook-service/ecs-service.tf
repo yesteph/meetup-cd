@@ -53,7 +53,7 @@ module "ecs_service" {
   project = "cd"
   ecs_cluster_name = "tf-meetup"
   container_port = "3000"
-  aws_alb_target_group_service_arn = "${data.terraform_remote_state.commons.default_target_group_arn}"
+  aws_alb_target_group_service_arn = "${local.public_alb_default_target_group_arn}"
 
   it_root_functional_area = "front"
   alarm_notification_topic_arn = ""
