@@ -1,4 +1,3 @@
 locals{
-  replication_group_id = "tf-cd-cache01"
-  cache_primary_endpoint_address = "${aws_elasticache_replication_group.cache.primary_endpoint_address}"
+  default_target_group_arn = "${terraform.workspace = -a}" ? data.terraform_remote_state.commons.default_target_group_arn-a
 }

@@ -1,0 +1,81 @@
+{
+    "version": 3,
+    "terraform_version": "0.11.7",
+    "serial": 4,
+    "lineage": "be2df542-3592-33fb-88dd-13d745b31b28",
+    "modules": [
+        {
+            "path": [
+                "root"
+            ],
+            "outputs": {},
+            "resources": {
+                "aws_elasticache_replication_group.cache": {
+                    "type": "aws_elasticache_replication_group",
+                    "depends_on": [],
+                    "primary": {
+                        "id": "tf-cd-cache01",
+                        "attributes": {
+                            "at_rest_encryption_enabled": "false",
+                            "auth_token": "",
+                            "auto_minor_version_upgrade": "false",
+                            "automatic_failover_enabled": "false",
+                            "cluster_mode.#": "0",
+                            "engine": "redis",
+                            "engine_version": "3.2.10",
+                            "id": "tf-cd-cache01",
+                            "maintenance_window": "sun:02:00-sun:04:00",
+                            "member_clusters.#": "1",
+                            "member_clusters.1355659431": "tf-cd-cache01-001",
+                            "node_type": "cache.t2.small",
+                            "number_cache_clusters": "1",
+                            "parameter_group_name": "default.redis3.2",
+                            "port": "6379",
+                            "primary_endpoint_address": "tf-cd-cache01.cukfcy.ng.0001.euw1.cache.amazonaws.com",
+                            "replication_group_description": "tf-rollingupdate-cd-cache01",
+                            "replication_group_id": "tf-cd-cache01",
+                            "security_group_ids.#": "1",
+                            "security_group_ids.755942120": "sg-05cffb3cc1774f909",
+                            "security_group_names.#": "0",
+                            "snapshot_retention_limit": "0",
+                            "snapshot_window": "",
+                            "subnet_group_name": "tf-rollingupdate-cd-cache01",
+                            "transit_encryption_enabled": "false"
+                        },
+                        "meta": {
+                            "e2bfb730-ecaa-11e6-8f88-34363bc7c4c0": {
+                                "create": 3600000000000,
+                                "delete": 2400000000000,
+                                "update": 2400000000000
+                            },
+                            "schema_version": "1"
+                        },
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "aws_elasticache_subnet_group.cache": {
+                    "type": "aws_elasticache_subnet_group",
+                    "depends_on": [],
+                    "primary": {
+                        "id": "tf-rollingupdate-cd-cache01",
+                        "attributes": {
+                            "description": "Managed by Terraform",
+                            "id": "tf-rollingupdate-cd-cache01",
+                            "name": "tf-rollingupdate-cd-cache01",
+                            "subnet_ids.#": "2",
+                            "subnet_ids.2171642407": "subnet-25d2107f",
+                            "subnet_ids.734031448": "subnet-525cb537"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                }
+            },
+            "depends_on": []
+        }
+    ]
+}

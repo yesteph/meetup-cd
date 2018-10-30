@@ -42,7 +42,7 @@ data template_file "service_definition" {
     aws_region            = "${var.aws_region}"
     cloudwatch_group_name = "${aws_cloudwatch_log_group.application.name}"
     environment           = "${terraform.workspace}"
-    REDIS_CONNECTION      = "${local.cache_primary_endpoint_address}:6379"
+    REDIS_CONNECTION      = "${data.terraform_remote_state.datastore.primary_endpoint_address}:6379"
   }
 }
 

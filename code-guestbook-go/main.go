@@ -74,7 +74,7 @@ func EnvHandler(rw http.ResponseWriter, req *http.Request) {
 }
 
 func VersionHandler(rw http.ResponseWriter, req *http.Request) {
-	rw.Write([]byte("{\"version\":\"v1\"}"))
+	rw.Write([]byte("{\"version\":\"v3\"}"))
 }
 
 func HandleError(result interface{}, err error) (r interface{}) {

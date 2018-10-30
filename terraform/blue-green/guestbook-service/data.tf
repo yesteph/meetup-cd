@@ -32,3 +32,15 @@ data "terraform_remote_state" "shared" {
     profile = "perso"
   }
 }
+
+data "terraform_remote_state" "datastore" {
+  backend = "s3"
+
+  workspace = "${replace(terraform.workspace, "/-(a|b)\\z/", "")}"
+  config {
+    bucket = "mybucket-perso1"
+    key    = "meetup-ecs-eks/guestbook-datastore/terraform.tfstate"
+    region = "eu-west-1"
+    profile = "perso"
+  }
+}

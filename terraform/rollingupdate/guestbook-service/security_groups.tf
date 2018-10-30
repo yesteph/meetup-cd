@@ -1,13 +1,11 @@
 resource "aws_security_group" "cache" {
-  name = "tf-${terraform.workspace}-cd-cache01"
+  name = "tf-cd-cache01"
   description = "Allow traffic to ElastiCache cache01"
   vpc_id = "${data.aws_vpc.vpc.id}"
 
   tags {
-    Name = "tf-${terraform.workspace}-cd-cache01"
-    "cost:project" = "cd",
-    "cost:cost-center" = "${terraform.workspace == "prod"?"prod":"dev"}",
-    "cost:environment" = "${terraform.workspace}"
+    Name = "tf-cd-cache01"
+    "cost:project" = "cd"
   }
 }
 

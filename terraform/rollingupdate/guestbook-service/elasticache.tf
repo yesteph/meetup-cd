@@ -1,11 +1,11 @@
 resource "aws_elasticache_subnet_group" "cache" {
-  name = "tf-${terraform.workspace}-cd-cache01"
+  name = "tf-cd-cache01"
   subnet_ids = ["${data.aws_subnet_ids.subnets.ids}"]
 }
 
 resource "aws_elasticache_replication_group" "cache" {
   replication_group_id = "${local.replication_group_id}"
-  replication_group_description = "tf-${terraform.workspace}-cd-cache01"
+  replication_group_description = "tf-cd-cache01"
   engine_version = "3.2.10"
   node_type = "cache.t2.small"
   number_cache_clusters = "1"
@@ -21,8 +21,6 @@ resource "aws_elasticache_replication_group" "cache" {
 
   tags {
     "cost:project" = "cd",
-    "cost:cost-center" = "${terraform.workspace == "prod"?"prod":"dev"}",
-    "cost:environment" = "${terraform.workspace}",
     "cost:component" = "elasticache",
   }
   count = "${terraform.workspace == "prod" ? 0 : 1}"

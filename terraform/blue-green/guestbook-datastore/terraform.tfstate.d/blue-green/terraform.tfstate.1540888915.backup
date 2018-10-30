@@ -1,0 +1,281 @@
+{
+    "version": 3,
+    "terraform_version": "0.11.7",
+    "serial": 16,
+    "lineage": "be2df542-3592-33fb-88dd-13d745b31b28",
+    "modules": [
+        {
+            "path": [
+                "root"
+            ],
+            "outputs": {},
+            "resources": {
+                "aws_elasticache_replication_group.cache": {
+                    "type": "aws_elasticache_replication_group",
+                    "depends_on": [],
+                    "primary": {
+                        "id": "tf-cd-cache01",
+                        "attributes": {
+                            "at_rest_encryption_enabled": "false",
+                            "auth_token": "",
+                            "auto_minor_version_upgrade": "false",
+                            "automatic_failover_enabled": "false",
+                            "cluster_mode.#": "0",
+                            "engine": "redis",
+                            "engine_version": "3.2.10",
+                            "id": "tf-cd-cache01",
+                            "maintenance_window": "sun:02:00-sun:04:00",
+                            "member_clusters.#": "1",
+                            "member_clusters.1355659431": "tf-cd-cache01-001",
+                            "node_type": "cache.t2.small",
+                            "number_cache_clusters": "1",
+                            "parameter_group_name": "default.redis3.2",
+                            "port": "6379",
+                            "primary_endpoint_address": "tf-cd-cache01.cukfcy.ng.0001.euw1.cache.amazonaws.com",
+                            "replication_group_description": "tf-cd-cache01",
+                            "replication_group_id": "tf-cd-cache01",
+                            "security_group_ids.#": "1",
+                            "security_group_ids.929194344": "sg-031ef7f9bb398b961",
+                            "security_group_names.#": "0",
+                            "snapshot_retention_limit": "0",
+                            "snapshot_window": "",
+                            "subnet_group_name": "tf-cd-cache01",
+                            "transit_encryption_enabled": "false"
+                        },
+                        "meta": {
+                            "e2bfb730-ecaa-11e6-8f88-34363bc7c4c0": {
+                                "create": 3600000000000,
+                                "delete": 2400000000000,
+                                "update": 2400000000000
+                            },
+                            "schema_version": "1"
+                        },
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "aws_elasticache_subnet_group.cache": {
+                    "type": "aws_elasticache_subnet_group",
+                    "depends_on": [],
+                    "primary": {
+                        "id": "tf-cd-cache01",
+                        "attributes": {
+                            "description": "Managed by Terraform",
+                            "id": "tf-cd-cache01",
+                            "name": "tf-cd-cache01",
+                            "subnet_ids.#": "2",
+                            "subnet_ids.2171642407": "subnet-25d2107f",
+                            "subnet_ids.734031448": "subnet-525cb537"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "aws_security_group.cache": {
+                    "type": "aws_security_group",
+                    "depends_on": [],
+                    "primary": {
+                        "id": "sg-031ef7f9bb398b961",
+                        "attributes": {
+                            "arn": "arn:aws:ec2:eu-west-1:980260041115:security-group/sg-031ef7f9bb398b961",
+                            "description": "Allow traffic to ElastiCache cache01",
+                            "egress.#": "1",
+                            "egress.482069346.cidr_blocks.#": "1",
+                            "egress.482069346.cidr_blocks.0": "0.0.0.0/0",
+                            "egress.482069346.description": "",
+                            "egress.482069346.from_port": "0",
+                            "egress.482069346.ipv6_cidr_blocks.#": "0",
+                            "egress.482069346.prefix_list_ids.#": "0",
+                            "egress.482069346.protocol": "-1",
+                            "egress.482069346.security_groups.#": "0",
+                            "egress.482069346.self": "false",
+                            "egress.482069346.to_port": "0",
+                            "id": "sg-031ef7f9bb398b961",
+                            "ingress.#": "1",
+                            "ingress.2905872167.cidr_blocks.#": "0",
+                            "ingress.2905872167.description": "",
+                            "ingress.2905872167.from_port": "6379",
+                            "ingress.2905872167.ipv6_cidr_blocks.#": "0",
+                            "ingress.2905872167.prefix_list_ids.#": "0",
+                            "ingress.2905872167.protocol": "tcp",
+                            "ingress.2905872167.security_groups.#": "1",
+                            "ingress.2905872167.security_groups.1847551931": "sg-03df1aa00a960c663",
+                            "ingress.2905872167.self": "false",
+                            "ingress.2905872167.to_port": "6379",
+                            "name": "tf-cd-cache01",
+                            "owner_id": "980260041115",
+                            "tags.%": "2",
+                            "tags.Name": "tf-cd-cache01",
+                            "tags.cost:project": "cd",
+                            "vpc_id": "vpc-302e3452"
+                        },
+                        "meta": {
+                            "e2bfb730-ecaa-11e6-8f88-34363bc7c4c0": {
+                                "create": 600000000000,
+                                "delete": 600000000000
+                            },
+                            "schema_version": "1"
+                        },
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "aws_security_group_rule.allow_all_from_cache": {
+                    "type": "aws_security_group_rule",
+                    "depends_on": [
+                        "aws_security_group.cache"
+                    ],
+                    "primary": {
+                        "id": "sgrule-279761009",
+                        "attributes": {
+                            "cidr_blocks.#": "1",
+                            "cidr_blocks.0": "0.0.0.0/0",
+                            "from_port": "0",
+                            "id": "sgrule-279761009",
+                            "protocol": "-1",
+                            "security_group_id": "sg-0aef49ddd59f92a2e",
+                            "self": "false",
+                            "to_port": "0",
+                            "type": "egress"
+                        },
+                        "meta": {
+                            "schema_version": "2"
+                        },
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "aws_security_group_rule.allow_ecs_to_cache": {
+                    "type": "aws_security_group_rule",
+                    "depends_on": [],
+                    "primary": {
+                        "id": "sgrule-3683691624",
+                        "attributes": {
+                            "cidr_blocks.#": "0",
+                            "description": "",
+                            "from_port": "6379",
+                            "id": "sgrule-3683691624",
+                            "ipv6_cidr_blocks.#": "0",
+                            "prefix_list_ids.#": "0",
+                            "protocol": "tcp",
+                            "security_group_id": "sg-031ef7f9bb398b961",
+                            "self": "false",
+                            "source_security_group_id": "sg-03df1aa00a960c663",
+                            "to_port": "6379",
+                            "type": "ingress"
+                        },
+                        "meta": {
+                            "schema_version": "2"
+                        },
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.aws_route53_zone.public_zone": {
+                    "type": "aws_route53_zone",
+                    "depends_on": [],
+                    "primary": {
+                        "id": "Z35WURCV029B87",
+                        "attributes": {
+                            "caller_reference": "RISWorkflow-RD:90dbd61f-aff5-4546-82e4-18c0fc1c29dc",
+                            "comment": "HostedZone created by Route53 Registrar",
+                            "id": "Z35WURCV029B87",
+                            "name": "steyssier.net.",
+                            "name_servers.#": "4",
+                            "name_servers.0": "ns-774.awsdns-32.net",
+                            "name_servers.1": "ns-1501.awsdns-59.org",
+                            "name_servers.2": "ns-402.awsdns-50.com",
+                            "name_servers.3": "ns-1614.awsdns-09.co.uk",
+                            "private_zone": "false",
+                            "resource_record_set_count": "6",
+                            "zone_id": "Z35WURCV029B87"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.aws_subnet_ids.subnets": {
+                    "type": "aws_subnet_ids",
+                    "depends_on": [
+                        "data.aws_vpc.vpc"
+                    ],
+                    "primary": {
+                        "id": "vpc-302e3452",
+                        "attributes": {
+                            "id": "vpc-302e3452",
+                            "ids.#": "2",
+                            "ids.2171642407": "subnet-25d2107f",
+                            "ids.734031448": "subnet-525cb537",
+                            "vpc_id": "vpc-302e3452"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.aws_vpc.vpc": {
+                    "type": "aws_vpc",
+                    "depends_on": [],
+                    "primary": {
+                        "id": "vpc-302e3452",
+                        "attributes": {
+                            "arn": "arn:aws:ec2:eu-west-1:980260041115:vpc/vpc-302e3452",
+                            "cidr_block": "10.0.0.0/16",
+                            "cidr_block_associations.#": "1",
+                            "cidr_block_associations.0.association_id": "vpc-cidr-assoc-1132d378",
+                            "cidr_block_associations.0.cidr_block": "10.0.0.0/16",
+                            "cidr_block_associations.0.state": "associated",
+                            "default": "false",
+                            "dhcp_options_id": "dopt-8c8396ee",
+                            "enable_dns_hostnames": "true",
+                            "enable_dns_support": "true",
+                            "id": "vpc-302e3452",
+                            "instance_tenancy": "default",
+                            "state": "available",
+                            "tags.%": "1",
+                            "tags.Name": "vpc-1"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.aws"
+                },
+                "data.terraform_remote_state.shared": {
+                    "type": "terraform_remote_state",
+                    "depends_on": [],
+                    "primary": {
+                        "id": "2018-10-30 05:56:59.04562416 +0000 UTC",
+                        "attributes": {
+                            "backend": "s3",
+                            "config.%": "4",
+                            "config.bucket": "mybucket-perso1",
+                            "config.key": "meetup-ecs-eks/shared/terraform.tfstate",
+                            "config.profile": "perso",
+                            "config.region": "eu-west-1",
+                            "ecs_cluster_security_group_id": "sg-03df1aa00a960c663",
+                            "environment": "default",
+                            "external_ecs_access_security_group_id": "sg-011319e8f6e157f98",
+                            "id": "2018-10-30 05:56:59.04562416 +0000 UTC",
+                            "workspace": "default"
+                        },
+                        "meta": {},
+                        "tainted": false
+                    },
+                    "deposed": [],
+                    "provider": "provider.terraform"
+                }
+            },
+            "depends_on": []
+        }
+    ]
+}
