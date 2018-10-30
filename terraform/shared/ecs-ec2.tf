@@ -1,5 +1,5 @@
 module "asg" {
-  source = "../modules/terraform-ecs-cluster-module"
+  source = "modules/terraform-ecs-cluster-module"
 
   providers {
     aws = "aws"
@@ -9,8 +9,8 @@ module "asg" {
   env = "demo"
   vpc_id = "${data.aws_vpc.vpc.id}"
   subnets = "${data.aws_subnet_ids.subnets.ids}"
-  autoscaling_max_size = "2"
-  autoscaling_min_size = "1"
+  autoscaling_max_size = "3"
+  autoscaling_min_size = "2"
   protect_resources = "false"
   it_business_unit = "continuousdev"
   it_root_functional_area = "front"
